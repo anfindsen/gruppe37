@@ -5,9 +5,9 @@ import tensorflow as tf
 
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 from sklearn.model_selection import train_test_split
-from tensorflow.keras import layers, losses
-from tensorflow.keras.datasets import fashion_mnist
-from tensorflow.keras.models import Model
+from keras import layers, losses
+from keras.datasets import fashion_mnist
+from keras.models import Model
 
 (x_train, _), (x_test, _) = fashion_mnist.load_data()
 
