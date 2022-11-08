@@ -6,12 +6,12 @@ import tensorflow as tf
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 from sklearn.model_selection import train_test_split
 from keras import layers, losses
-from keras.datasets import fashion_mnist
+from keras.datasets import mnist
 from keras.models import Model
 
 
 
-(x_train, _), (x_test, _) = fashion_mnist.load_data()
+(x_train, _), (x_test, _) = mnist.load_data()
 
 x_train = x_train.astype('float32') / 255.
 x_test = x_test.astype('float32') / 255.
@@ -20,7 +20,7 @@ print (x_train.shape)
 print (x_test.shape)
 
 
-latent_dim = 64 
+latent_dim = 20
 
 class Autoencoder(Model):
   def __init__(self, latent_dim):
@@ -47,7 +47,7 @@ autoencoder.compile(optimizer='adam', loss=losses.MeanSquaredError())
 
 autoencoder.fit(
     x_train, x_train,
-    epochs = 10,
+    epochs = 5,
     shuffle = True,
     validation_data = (x_test, x_test)
 )
